@@ -231,7 +231,7 @@ season_dict={"January":"Winter", "February":"Winter",
              "November":"Autumn","December":"Winter"}
 
 category_orders_dict = {"day_name":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "month_name":["January","February","March","April","June","July","August","September","October","November","December"], "season_name":["Spring","Summer","Autumn","Winter"]}
-path="/Users/sophiabao/文件/onlineclasses/DataQuest/CaseStudy1/"
+path=""
 # In[47]:
 
 
