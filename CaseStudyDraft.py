@@ -207,7 +207,10 @@ country_dict = {"British Columbia Canada":"Canada",
                "West Pakistan":"Pakistan",
                "Bugaria":"Bulgaria",
                "Northern Ireland":"England",
-               "Afghanstan":"Afghanistan"}
+               "Afghanstan":"Afghanistan",
+               "Timor": "Timor-Leste",
+               "French West Africa":"Guinea",
+               "Yugoslavia":"Serbia"}
 state_names = ["Alaska", "Alabama", "Arkansas", "American Samoa", "Arizona","California", "Colorado", "Connecticut", "District of Columbia", "Delaware", "Florida", "Georgia", "Guam", "Hawaii", "Iowa", "Idaho", "Illinois", "Indiana", "Kansas", "Kentucky", "Louisiana", "Massachusetts", "Maryland", "Maine", "Michigan", "Minnesota", "Missouri", "Mississippi", "Montana", "North Carolina", "North Dakota", "Nebraska", "New Hampshire", "New Jersey", "New Mexico", "Nevada", "New York", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Virginia", "Virgin Islands", "Vermont", "Washington", "Wisconsin", "West Virginia", "Wyoming"]
 state_typos = ["Deleware","Minnisota","NY","WY","United States","Ilinois","U.S. Samoa","Cailifornia","Washington D.C.","Off the Florida coast","Washingon","Massachusett","Washington DC","New York (Idlewild)","Louisana","Tennesee","Deleware","Near Chicago Illinois","Massachutes","US Virgin Islands","Alakska","Off the Alaska coast","U.S. Virgin Islands","Wisconson","Off Wake Island","AK","IN","Alaksa","CA","Airzona","En route from Argentina  to  California","GA","Calilfornia",
               "Virginia.",
@@ -231,7 +234,7 @@ season_dict={"January":"Winter", "February":"Winter",
              "November":"Autumn","December":"Winter"}
 
 category_orders_dict = {"day_name":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "month_name":["January","February","March","April","June","July","August","September","October","November","December"], "season_name":["Spring","Summer","Autumn","Winter"]}
-path=""
+path="/Users/sophiabao/文件/onlineclasses/DataQuest/CaseStudy1/"
 # In[47]:
 
 
@@ -471,12 +474,13 @@ if selected=="Exploratory Analysis":
     "shot","unknown","fire","british","french","system","mechanical","error"
     "groundworkers","comunication","landing","liftoff","WordCat"]])
         
+        logscale1 = st.checkbox("Do you want a log scale?",False, key = 4)
         x1_name = [name for name, pname in all_pretty_names.items() if pname == x1]
         y1_name = [name for name, pname in all_pretty_names.items() if pname == y1]
         color1_name = [name for name, pname in all_pretty_names.items() if pname == color1]
         submitted = st.form_submit_button("Click to display Scatter plot")
         if submitted:
-            col2.plotly_chart(px.scatter(summarydf, x=x1_name[0], y=y1_name[0], color=color1_name[0], labels=all_pretty_names, category_orders = category_orders_dict))
+            col2.plotly_chart(px.scatter(summarydf, x=x1_name[0], y=y1_name[0], color=color1_name[0], labels=all_pretty_names, category_orders = category_orders_dict, log_y = logscale1))
     
     
     
@@ -560,7 +564,7 @@ if selected=="Exploratory Analysis":
     
     with col9.form("Choropleth_Form"):
         animation_value = st.selectbox("Please select the variable that the animation would be based on", [pname for name, pname in all_pretty_names.items() if name in["month_name","day_name","season"]])
-        color2 = col1.selectbox("please select the variable that the color would be based on", 
+        color2 = col9.selectbox("please select the variable that the color would be based on", 
                                 [pname for name, pname in all_pretty_names.items() if name 
                                  in["Aboard","Fatalities","Ground"]])
         projection = st.selectbox("please select the projection of the map", ('equirectangular', 'mercator', 'orthographic', 'natural earth', 'kavrayskiy7', 'miller', 'robinson', 'eckert4', 'azimuthal equal area', 'azimuthal equidistant', 'conic equal area', 'conic conformal', 'conic equidistant', 'gnomonic', 'stereographic', 'mollweide', 'hammer', 'transverse mercator', 'winkel tripel', 'aitoff', 'sinusoidal'))
@@ -638,6 +642,7 @@ if selected=="Conclusion":
 
 if selected=="Bibliography":
     st.title("Bibliography")
+    st.markdown("""Works Cited “Airplane Crashes and Fatalities.” Www.kaggle.com, www.kaggle.com/datasets/thedevastator/airplane-crashes-and-fatalities.""")
 # In[6]:
 
 
