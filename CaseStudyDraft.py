@@ -185,7 +185,7 @@ country_dict = {"British Columbia Canada":"Canada",
                "Belgian Congo":"Congo",
                "Zaire":"Congo",
                "West Germany":"Germany",
-               "Sao Tomé":"São Tomé and Príncipe",
+               "Sao Tomé":"Sao Tome and Principe",
                "UK":"England",
                "Bulgeria":"Bulgaria",
                "Off western Denmark":"Denmark",
@@ -193,11 +193,10 @@ country_dict = {"British Columbia Canada":"Canada",
                "Off South Africa":"South Africa",
                "Amsterdam":"Netherlands",
                "Vienna":"Austria",
-               "Deuch Guyana":"Surinam",
+               "Deuch Guyana":"Suriname",
                "Bosnia":"Bosnia and Herzegovina",
                "Tasmania":"Australia",
                "Malaya":"Malaysia",
-               "Philippine":"Philippines",
                "Wales":"England",
                "AtlantiOcean off Florida":"US",
                "Off Bahrain":"Bahrain",
@@ -210,7 +209,13 @@ country_dict = {"British Columbia Canada":"Canada",
                "Afghanstan":"Afghanistan",
                "Timor": "Timor-Leste",
                "French West Africa":"Guinea",
-               "Yugoslavia":"Serbia"}
+               "Yugoslavia":"Serbia",
+               "Dutch Guyana":"Suriname",
+               "Antigua":"Antigua and Barbuda",
+               "Chili":"Chile",
+               "Comoro Islands":"Comoros",
+               "South Yemen":"Yemen",
+               "Formosa Strait":"China"}
 state_names = ["Alaska", "Alabama", "Arkansas", "American Samoa", "Arizona","California", "Colorado", "Connecticut", "District of Columbia", "Delaware", "Florida", "Georgia", "Guam", "Hawaii", "Iowa", "Idaho", "Illinois", "Indiana", "Kansas", "Kentucky", "Louisiana", "Massachusetts", "Maryland", "Maine", "Michigan", "Minnesota", "Missouri", "Mississippi", "Montana", "North Carolina", "North Dakota", "Nebraska", "New Hampshire", "New Jersey", "New Mexico", "Nevada", "New York", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Virginia", "Virgin Islands", "Vermont", "Washington", "Wisconsin", "West Virginia", "Wyoming"]
 state_typos = ["Deleware","Minnisota","NY","WY","United States","Ilinois","U.S. Samoa","Cailifornia","Washington D.C.","Off the Florida coast","Washingon","Massachusett","Washington DC","New York (Idlewild)","Louisana","Tennesee","Deleware","Near Chicago Illinois","Massachutes","US Virgin Islands","Alakska","Off the Alaska coast","U.S. Virgin Islands","Wisconson","Off Wake Island","AK","IN","Alaksa","CA","Airzona","En route from Argentina  to  California","GA","Calilfornia",
               "Virginia.",
@@ -224,7 +229,7 @@ state_typos = ["Deleware","Minnisota","NY","WY","United States","Ilinois","U.S. 
               "Off the Oregon coast",
               "Off the coast of Maryland",
               "Wake Island",
-              "Coloado", "Arazona","D.C."]
+              "Coloado", "Arazona","D.C.","HI"]
 listofwrong=["Deleware","Near Chicago Illinois","Massachutes","Near Tipuani (Bolivia","DemocratiRepubliof Congo","Romainia","Louisana", "Sao Tomé & Principe","Philippine Sea","Off Puerto Rico","Guernsey","Morrocco","Midway Island Naval Air Station","New York (Idlewild)","Qld. Australia","Off Guam","Baangladesh","Over the North PacifiOcean","French Equitorial Africa","Cameroons","Off the Oregon coast","Off the coast of Maryland","South Dekota","Off Irish coast","Oklohoma","Mt. Helmos. Greece","Near Novgorod (Russia","Hunary","Formosa Strait","Upper Volta","Khmer Republic","Tahiti","Off the Alaska coast","Near Ardinello di Amaseno","South Yemen","Alakska","325 miles east of Wake Island","US Virgin Islands","Near Villia Greece","Off  Taiwan","Wake Island","Off Chili","South Africa (Namibia)","Reunion","Northern India","Indian","Off Northern Panama","French Somaliland","Western Samoa","Southeastern Bolivia","Sea of Japan","Off South Africa"]
 season_dict={"January":"Winter", "February":"Winter",
              "March":"Spring","April":"Spring",
@@ -274,7 +279,7 @@ df = pd.concat(country_continents, ignore_index=True)
 df = df[['Country or Area', 'Continent']]
 df = df.set_index('Country or Area')
 country_continents_dict = df.to_dict(orient='dict').get("Continent")
-country_continents_dict.update({"England":"Europe", "US":"North America", "Russia":"Europe", "North Sea":"Europe", "English Channel":"Europe", "Mediterranean Sea":"Europe", "Atlantic Ocean":"Ocean", "Pacific Ocean":"Ocean", "Czechoslovakia":"Europe", "Venezuela":"South America", "Bolivia":"South America", "Iran":"Asia", "Syria":"Asia", "Algiers": "Africa","New Guinea":"Oceania", "South Korea":"Asia", "Ivory Coast":"Africa","Tanzania":"Africa","Indian Ocean":"Ocean", "Sea of Japan":"Asia", "Persian Gulf":"Asia", "Vietnam":"Asia", "Laos":"Asia", "Himalayas":"Asia","North Korea":"Asia"})
+country_continents_dict.update({"England":"Europe", "US":"North America", "Russia":"Europe", "North Sea":"Europe", "English Channel":"Europe", "Mediterranean Sea":"Europe", "Atlantic Ocean":"Ocean", "Pacific Ocean":"Ocean", "Czechoslovakia":"Europe", "Venezuela":"South America", "Bolivia":"South America", "Iran":"Asia", "Syria":"Asia", "Algiers": "Africa","New Guinea":"Oceania", "South Korea":"Asia", "Ivory Coast":"Africa","Tanzania":"Africa","Indian Ocean":"Ocean", "Sea of Japan":"Asia", "Persian Gulf":"Asia", "Vietnam":"Asia", "Laos":"Asia", "Himalayas":"Asia","North Korea":"Asia", "Borneo":"Oceania","Baltic Sea":"Europe","Mariana Islands":"Oceania", "West Indies":"South America","Canary Islands":"Africa"})
 plane["Continent"] = plane["country1"].map(country_continents_dict)
 problems = plane.loc[plane["Continent"].isnull(),["country1"]]
 
@@ -374,9 +379,9 @@ if selected == 'Abstract':
 if selected=="Background Information":
     st.title("Background Information")
     st.markdown("Nowadays, the rate of plane crashes is very low. However, plane crashes are disasters and causes depressing consequences to the people on the plane and on the grounds once they happen. “I want to express sympathy to the families who lost loved ones to this terrible tragedy.” said Graham Dallas, at a media briefing after the Boeing B-17G and Bell p-63F planes collided. after finding out on a magazine that plane crashes are caused from different, interesting reasons I decided to investigate further about how to prevent these kinds of disasters. ")
-    st.markdown("I found a dataset on Kaggle about plane crashes. It is very interesting and included many it had data from the beginning of the 1900s. Please see the dataset below:")
+    st.markdown("I found a dataset on Kaggle about plane crashes. It is very interesting and included many data from the beginning of the 1900s to the present. Please see the dataset below:")
     st.dataframe(plane_raw)
-    
+    st.markdown("On the following pages, I will clean the dataset, allow you to make some graphs and make some intresting graphs myself. Then I would draw an conclution on plane crashes based on the graphs I made.")
 if selected=="Data Cleaning":
     st.title("Data Cleaning")
     st.markdown("I edited the dataset and added new columns into it to make it more easier to understand at get more data from the dataset. Here are my steps.")
