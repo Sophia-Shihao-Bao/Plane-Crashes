@@ -526,7 +526,7 @@ if selected=="Exploratory Analysis":
       y3_name = [name for name, pname in all_pretty_names.items() if pname == y3]
       color2_name = [name for name, pname in all_pretty_names.items() if pname == color2]
        # Every form must have a submit button.
-      submitted = st.form_submit_button("Click to display box plot")
+      submitted = col5.form_submit_button("Click to display box plot")
       if submitted:
         col6.plotly_chart(px.box(summarydf, x=x3_name[0], y=y3_name[0], color=color2_name[0], labels=all_pretty_names, category_orders=category_orders_dict, log_y = logscale))
 
