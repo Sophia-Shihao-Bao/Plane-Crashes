@@ -521,7 +521,7 @@ if selected=="Exploratory Analysis":
         [pname for name, pname in all_pretty_names.items() if name in["year", "decades", "month_name", "day_name", "season", "DeathRatioCat", "FatalitiesCat","Continent"]], key=1)
       y3 = st.selectbox("Select the Y value of the graph", [pname for name, pname in all_pretty_names.items() if name in["Aboard", "Fatalities","Ground", "death ratio"]], key = 2)
       color2 = st.selectbox("Select the Color variable", [pname for name, pname in all_pretty_names.items() if name in["year", "decades", "month_name", "day_name", "season", "DeathRatioCat", "FatalitiesCat"]], key=3)
-      logscale = st.checkbox("Do you want a log scale?",False, key = 5)
+      logscale = st.checkbox("Do you want a log scale?",False, key = 100)
       x3_name = [name for name, pname in all_pretty_names.items() if pname == x3]
       y3_name = [name for name, pname in all_pretty_names.items() if pname == y3]
       color2_name = [name for name, pname in all_pretty_names.items() if pname == color2]
