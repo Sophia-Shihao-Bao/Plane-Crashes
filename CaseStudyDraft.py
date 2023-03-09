@@ -521,12 +521,12 @@ if selected=="Exploratory Analysis":
         [pname for name, pname in all_pretty_names.items() if name in["year", "decades", "month_name", "day_name", "season", "DeathRatioCat", "FatalitiesCat","Continent"]], key=1)
       y3 = st.selectbox("Select the Y value of the graph", [pname for name, pname in all_pretty_names.items() if name in["Aboard", "Fatalities","Ground", "death ratio"]], key = 2)
       color2 = st.selectbox("Select the Color variable", [pname for name, pname in all_pretty_names.items() if name in["year", "decades", "month_name", "day_name", "season", "DeathRatioCat", "FatalitiesCat"]], key=3)
-      logscale = st.checkbox("Do you want a log scale?",False, key = 4)
+      logscale = st.checkbox("Do you want a log scale?",False, key = 5)
       x3_name = [name for name, pname in all_pretty_names.items() if pname == x3]
       y3_name = [name for name, pname in all_pretty_names.items() if pname == y3]
       color2_name = [name for name, pname in all_pretty_names.items() if pname == color2]
        # Every form must have a submit button.
-      submitted = col5.form_submit_button("Click to display box plot")
+      submitted = st.form_submit_button("Click to display box plot")
       if submitted:
         col6.plotly_chart(px.box(summarydf, x=x3_name[0], y=y3_name[0], color=color2_name[0], labels=all_pretty_names, category_orders=category_orders_dict, log_y = logscale))
 
